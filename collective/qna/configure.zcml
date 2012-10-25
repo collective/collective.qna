@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.qna">
+
+    <includeDependencies package="." />
+
+    <include package=".browser" file="configure.zcml" />
+
+    <genericsetup:registerProfile
+        name="default"
+        title="collective.qna"
+        directory="profiles/default"
+        description="Stackexchange-alike question and answer forum"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+</configure>
