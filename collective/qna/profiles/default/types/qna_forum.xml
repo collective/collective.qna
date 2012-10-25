@@ -28,7 +28,7 @@
  </property>
 
  <!-- Add permission -->
- <property name="add_permission">cmf.AddPortalContent</property>
+ <property name="add_permission">collective.qna.AddForum</property>
 
  <!-- View information -->
  <property name="default_view">view</property>

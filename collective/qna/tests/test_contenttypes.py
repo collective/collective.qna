@@ -1,8 +1,9 @@
 from Products.CMFCore.utils import getToolByName
 
-from plone.app.testing import setRoles, TEST_USER_ID
+from plone.app.testing import setRoles, login
 
 from .base import IntegrationTestCase
+from .base import MANAGER_ID, USER_A_ID, USER_B_ID, USER_C_ID
 
 
 class ContentTypeTest(IntegrationTestCase):
@@ -11,7 +12,7 @@ class ContentTypeTest(IntegrationTestCase):
         """Content types can be created and nested appropriately
         """
         portal = self.layer['portal']
-        setRoles(portal, TEST_USER_ID, ['Manager'])
+        login(portal, MANAGER_ID)
         wftool = getToolByName(portal, 'portal_workflow')
 
         portal.invokeFactory(type_name="qna_forum", id="qna")

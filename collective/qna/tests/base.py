@@ -4,18 +4,19 @@ from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import IntegrationTesting, FunctionalTesting
 from plone.app.testing import applyProfile
-from plone.app.testing import setRoles
+from plone.app.testing import setRoles, login, logout
 from zope.configuration import xmlconfig
 
 from Products.CMFCore.utils import getToolByName
 
+USER_A_ID = "Arnold"
+USER_B_ID = "Betty"
+USER_C_ID = "Caroline"
+MANAGER_ID = "BigBoss"
+
 
 class QnAFixture(PloneSandboxLayer):
     default_bases = (PLONE_FIXTURE,)
-    USER_A_ID = "Arnold"
-    USER_B_ID = "Betty"
-    USER_C_ID = "Caroline"
-    MANAGER_ID = "BigBoss"
 
     def setUpZope(self, app, configurationContext):
         import collective.qna
@@ -27,13 +28,13 @@ class QnAFixture(PloneSandboxLayer):
 
         # Creates some users
         acl_users = getToolByName(portal, 'acl_users')
-        for id in [self.USER_A_ID, self.USER_B_ID, self.USER_C_ID]:
+        for id in [USER_A_ID, USER_B_ID, USER_C_ID]:
             acl_users.userFolderAddUser(
                 id, 'secret'+id[0],
                 ['Member'],[]
             )
         acl_users.userFolderAddUser(
-            self.MANAGER_ID, 'secretBB',
+            MANAGER_ID, 'secretBB',
             ['Manager'],[]
         )
 

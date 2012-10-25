@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="collective.qna">
+
+    <permission
+        id="collective.qna.AddForum"
+        title="collective.qna: Add forum"
+        />
+    <permission
+        id="collective.qna.AdministerForum"
+        title="collective.qna: Administer forum"
+        />
+    <permission
+        id="collective.qna.CreateQuestions"
+        title="collective.qna: Create questions"
+        />
+    <permission
+        id="collective.qna.AnswerQuestions"
+        title="collective.qna: Answer questions"
+        />
+
+</configure>
