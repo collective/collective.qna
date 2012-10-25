@@ -26,6 +26,13 @@ class IQuestion(model.Schema):
         title=_(u'Ask your question'),
         required=False)
 
+    #TODO: Vocab for answers
+    directives.omitted('best_answer')
+    directives.no_omit(IDisplayForm, 'best_answer')
+    best_answer = schema.TextLine(
+        title=_(u'Best answer'),
+        required=False)
+
 class IAnswer(model.Schema):
     """An answer to a question
     """
@@ -38,10 +45,4 @@ class IAnswer(model.Schema):
     directives.no_omit(IDisplayForm, 'score')
     score = schema.Int(
         title=_(u'Answer score'),
-        required=False)
-
-    directives.omitted('best_answer')
-    directives.no_omit(IDisplayForm, 'best_answer')
-    best_answer = schema.Bool(
-        title=_(u'Best answer'),
         required=False)
