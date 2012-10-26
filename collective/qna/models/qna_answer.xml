@@ -1,0 +1,8 @@
+<model xmlns="http://namespaces.plone.org/supermodel/schema">
+  <schema>
+    <field name="answer" type="zope.schema.Text">
+      <title>Answer</title>
+      <description>Enter your answer</description>
+    </field>
+  </schema>
+</model>

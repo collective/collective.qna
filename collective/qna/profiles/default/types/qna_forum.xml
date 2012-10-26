@@ -19,12 +19,14 @@
  <property name="klass">plone.dexterity.content.Container</property>
 
  <!-- Schema interface -->
- <property name="schema">collective.qna.contenttypes.IForum</property>
+ <property name="model_file">collective.qna.models:qna_forum.xml</property>
+ <property name="model_source"></property>
 
  <!-- Behaviors -->
  <property name="behaviors">
      <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/>
      <element value="plone.app.content.interfaces.INameFromTitle" />
+     <element value="collective.qna.behaviors.IForum" />
  </property>
 
  <!-- Add permission -->

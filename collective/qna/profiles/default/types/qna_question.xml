@@ -4,7 +4,7 @@
 
  <!-- Basic metadata -->
  <property name="title" i18n:translate="">Question</property>
- <property name="description" i18n:translate="">Question</property>
+ <property name="description" i18n:translate="">Please enter your question below, giving as much detail as you can.</property>
  <property name="content_icon">folder_icon.gif</property>
  <property name="allow_discussion">False</property>
 
@@ -19,12 +19,13 @@
  <property name="klass">plone.dexterity.content.Container</property>
 
  <!-- Schema interface -->
- <property name="schema">collective.qna.contenttypes.IQuestion</property>
+ <property name="model_file">collective.qna.models:qna_question.xml</property>
+ <property name="model_source"></property>
 
  <!-- Behaviors -->
  <property name="behaviors">
-     <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/>
      <element value="plone.app.content.interfaces.INameFromTitle" />
+     <element value="collective.qna.behaviors.IQuestion" />
  </property>
 
  <!-- Add permission -->
