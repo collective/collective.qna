@@ -36,4 +36,10 @@
         provides=".behaviors.IAnswer"
         />
 
+    <utility
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        name="collective.qna.answers"
+        component=".behaviors.AnswersVocab"
+        />
+
 </configure>
