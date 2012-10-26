@@ -5,7 +5,7 @@
  <!-- Basic metadata -->
  <property name="title" i18n:translate="">Answer</property>
  <property name="description" i18n:translate="">Enter your answer to the question here</property>
- <property name="content_icon">folder_icon.gif</property>
+ <property name="content_icon">document_icon.gif</property>
  <property name="allow_discussion">False</property>
 
  <!-- Type heirarchy -->
