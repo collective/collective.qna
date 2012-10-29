@@ -24,11 +24,11 @@
       I don't know how to do this
     </div>
   </a>
-  <ul class="tags">
-    <li tal:repeat="tag question/Subject">
+  <ul class="categories">
+    <li tal:repeat="category question/Subject">
       <a href="#"
-         tal:attributes="href python:context.absolute_url() + '?tag=' + url_quote(tag,'');"
-         tal:content="tag">
+         tal:attributes="href python:context.absolute_url() + '/by-category?category=' + url_quote(category,'');"
+         tal:content="category">
          Tag
       </a>
     </li>

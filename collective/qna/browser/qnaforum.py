@@ -12,6 +12,13 @@ class ForumView(BrowserView):
         super(ForumView, self).__init__(context, request)
         page = request.get('page', 1)
         self.batch_start = (page - 1) * self.batch_size
+        self.query = dict(
+            batch=True,
+            b_start=self.batch_start,
+            b_size=self.batch_size,
+            sort_on='created',
+            sort_order='descending',
+        )
 
     def renderQuestion(self, question):
         return self.question_template(
@@ -24,13 +31,9 @@ class MostRecent(ForumView):
     """
 
     def questionListing(self):
-        listing = self.context.restrictedTraverse('@@folderListing')(
-            batch=True,
-            b_start=self.batch_start,
-            b_size=self.batch_size,
-            sort_on='created',
-            sort_order='descending',
-        )
+        listing = self.context.restrictedTraverse('@@folderListing')(**dict(
+            self.query
+        ))
         return [item for item in listing if item.isVisibleInNav()]
 
 
@@ -46,3 +49,16 @@ class AllUnanswered(ForumView):
     """
 
     pass
+
+
+class ByCategory(ForumView):
+    """All questions marked with a category
+    """
+
+    def questionListing(self):
+        category = self.request.get('category', None)
+        listing = self.context.restrictedTraverse('@@folderListing')(**dict(
+            self.query,
+            Subject=category,
+        ))
+        return [item for item in listing if item.isVisibleInNav()]

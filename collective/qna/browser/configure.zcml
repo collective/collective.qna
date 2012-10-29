@@ -27,4 +27,12 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      for="..behaviors.IForum"
+      name="by-category"
+      class=".qnaforum.ByCategory"
+      template="qna_forum_view.pt"
+      permission="zope2.View"
+      />
+
 </configure>
