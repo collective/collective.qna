@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="portal_catalog">
+
+    <index name="qna_total_answers" meta_type="FieldIndex">
+        <indexed_attr value="qna_total_answers"/>
+    </index>
+
+    <column value="qna_total_answers" />
+
+</object>

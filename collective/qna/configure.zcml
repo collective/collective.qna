@@ -42,4 +42,7 @@
         component=".behaviors.AnswersVocab"
         />
 
+    <!-- Conversation indexes -->
+    <adapter name="qna_total_answers" factory=".catalog.qna_total_answers" />
+
 </configure>
