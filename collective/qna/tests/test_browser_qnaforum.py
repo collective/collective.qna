@@ -29,6 +29,14 @@ class ForumBrowserViewTest(IntegrationTestCase):
             )
             forum[id].creation_date = dt2DT(datetime.now()
                                             - timedelta(hours=30 - i))
+            for i in range(0, i % 5):
+                # Answer the question i mod 5 times (i.e. no answers iff
+                # divisible by 5)
+                forum[id].invokeFactory(
+                    type_name="qna_answer",
+                    id="answer%d" % i,
+                    answer="Answer %d" % i,
+                )
             forum[id].reindexObject()
 
     def test_mostrecent(self):
@@ -48,6 +56,20 @@ class ForumBrowserViewTest(IntegrationTestCase):
         self.assertEquals(len(listing), 10)
         for i, qn in enumerate(range(15, 6, -1)):
             self.assertEquals(listing[i].id, 'question' + str(qn))
+
+    def test_unanswered(self):
+        """Content types can be created and nested appropriately
+        """
+        forum = self.layer['portal']['qna']
+
+        # Should get first 10 results
+        listing = forum.restrictedTraverse('@@all-unanswered').questionListing()
+        self.assertEquals(len(listing), 5)
+        self.assertEquals(listing[0].id, 'question25')
+        self.assertEquals(listing[1].id, 'question20')
+        self.assertEquals(listing[2].id, 'question15')
+        self.assertEquals(listing[3].id, 'question10')
+        self.assertEquals(listing[4].id, 'question5')
 
     def test_bycategory(self):
         """Content types can be created and nested appropriately

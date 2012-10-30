@@ -48,7 +48,12 @@ class AllUnanswered(ForumView):
     """All questions currently without answers
     """
 
-    pass
+    def questionListing(self):
+        listing = self.context.restrictedTraverse('@@folderListing')(**dict(
+            self.query,
+            qna_total_answers=0,
+        ))
+        return [item for item in listing if item.isVisibleInNav()]
 
 
 class ByCategory(ForumView):

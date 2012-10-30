@@ -22,7 +22,7 @@
   <browser:page
       for="..behaviors.IForum"
       name="all-unanswered"
-      class=".qnaforum.MostRecent"
+      class=".qnaforum.AllUnanswered"
       template="qna_forum_view.pt"
       permission="zope2.View"
       />
