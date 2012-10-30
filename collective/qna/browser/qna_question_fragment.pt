@@ -8,6 +8,12 @@
      class="qna_question_listing"
      >
 
+  <a href="#" class="total-answers"
+     tal:attributes="href question/getURL">
+     <span tal:content="question/qna_total_answers">5</span>
+     <span>Answers</span>
+  </a>
+
   <a href="#" class="user"
      tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/author/${question/Creator};"
      >
