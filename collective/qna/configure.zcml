@@ -45,4 +45,10 @@
     <!-- Conversation indexes -->
     <adapter name="qna_total_answers" factory=".catalog.qna_total_answers" />
 
+    <subscriber
+        for=".behaviors.IAnswer
+             zope.app.container.interfaces.IObjectAddedEvent"
+        handler=".events.IndexParent"
+        />
+
 </configure>
