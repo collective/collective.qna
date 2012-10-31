@@ -50,5 +50,11 @@
              zope.app.container.interfaces.IObjectAddedEvent"
         handler=".events.IndexParent"
         />
+    <!-- Answers shouldn't be editable by the question owners -->
+    <subscriber
+        for=".behaviors.IAnswer
+             zope.app.container.interfaces.IObjectAddedEvent"
+        handler=".events.DontInheritLocalRoles"
+        />
 
 </configure>
