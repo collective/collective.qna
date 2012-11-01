@@ -10,7 +10,6 @@
       template="qna_forum_view.pt"
       permission="zope2.View"
       />
-
   <browser:page
       for="..behaviors.IForum"
       name="most-activity"
@@ -18,7 +17,6 @@
       template="qna_forum_view.pt"
       permission="zope2.View"
       />
-
   <browser:page
       for="..behaviors.IForum"
       name="all-unanswered"
@@ -26,7 +24,6 @@
       template="qna_forum_view.pt"
       permission="zope2.View"
       />
-
   <browser:page
       for="..behaviors.IForum"
       name="by-category"
@@ -35,4 +32,10 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      for="..behaviors.IQuestion"
+      name="fragment"
+      template="qna_question_fragment.pt"
+      permission="zope2.View"
+      />
 </configure>

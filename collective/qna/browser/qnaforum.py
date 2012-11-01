@@ -1,11 +1,9 @@
 from Products.Five import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class ForumView(BrowserView):
     """Base class for all IForum-ish things
     """
-    question_template = ViewPageTemplateFile('qna_question_fragment.pt')
     batch_size = 10
 
     def __init__(self, context, request):
@@ -18,11 +16,6 @@ class ForumView(BrowserView):
             b_size=self.batch_size,
             sort_on='created',
             sort_order='descending',
-        )
-
-    def renderQuestion(self, question):
-        return self.question_template(
-            question=question,
         )
 
 
