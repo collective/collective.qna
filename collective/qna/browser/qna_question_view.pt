@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="collective.qna">
+<body>
+
+<metal:main fill-slot="main">
+  <h1 class="documentFirstHeading" tal:content="context/Title" />
+  <p class="documentDescription" tal:content="context/details" />
+
+  <ul class="qna-answer-listing">
+    <li tal:repeat="item context/@@folderListing"
+        tal:attributes="class python:'best-answer' if item.getId() == getattr(context,'best_answer','') else ''"
+        >
+        <div tal:define="ob item/getObject"
+             tal:content="structure ob/@@fragment" />
+    </li>
+  </ul>
+</metal:main>
+
+</body>
+</html>

@@ -34,8 +34,21 @@
 
   <browser:page
       for="..behaviors.IQuestion"
+      name="view"
+      template="qna_question_view.pt"
+      permission="zope2.View"
+      />
+  <browser:page
+      for="..behaviors.IQuestion"
       name="fragment"
       template="qna_question_fragment.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="..behaviors.IAnswer"
+      name="fragment"
+      template="qna_answer_fragment.pt"
       permission="zope2.View"
       />
 </configure>
