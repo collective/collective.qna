@@ -12,12 +12,22 @@
   <p class="documentDescription" tal:content="context/details" />
 
   <ul class="qna-answer-listing">
-    <li tal:repeat="item context/@@folderListing"
-        tal:attributes="class python:'best-answer' if item.getId() == getattr(context,'best_answer','') else ''"
-        >
-        <div tal:define="ob item/getObject"
-             tal:content="structure ob/@@fragment" />
-    </li>
+    <tal:t tal:repeat="item context/@@folderListing">
+      <li tal:define="isBest python:item.getId() == getattr(context,'best_answer','')"
+          tal:attributes="class python:'best-answer' if isBest else ''"
+          >
+          <div tal:define="ob item/getObject"
+               tal:content="structure ob/@@fragment" />
+          <ul class="actions">
+            <li tal:condition="python:view.canEditContent() and not(isBest)">
+              <a href="#"
+                 tal:attributes="href string:${context/absolute_url}/mark-best-answer?id=${item/getId};">
+                Mark as best answer
+              </a>
+            </li>
+          </ul>
+      </li>
+    </tal:t>
   </ul>
 </metal:main>
 

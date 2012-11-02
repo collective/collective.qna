@@ -35,14 +35,23 @@
   <browser:page
       for="..behaviors.IQuestion"
       name="view"
+      class=".qnaquestion.QuestionView"
       template="qna_question_view.pt"
       permission="zope2.View"
       />
   <browser:page
       for="..behaviors.IQuestion"
       name="fragment"
+      class=".qnaquestion.QuestionView"
       template="qna_question_fragment.pt"
       permission="zope2.View"
+      />
+  <browser:page
+      for="..behaviors.IQuestion"
+      name="mark-best-answer"
+      class=".qnaquestion.QuestionView"
+      attribute="markBestAnswer"
+      permission="cmf.ModifyPortalContent"
       />
 
   <browser:page
