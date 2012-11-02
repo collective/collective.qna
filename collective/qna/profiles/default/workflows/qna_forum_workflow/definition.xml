@@ -41,7 +41,6 @@
   </permission-map>
   <permission-map name="Add portal content"
                   acquired="False">
-   <!--TODO: What about all the lovingly-crafted custom permissions? -->
    <permission-role>Member</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>

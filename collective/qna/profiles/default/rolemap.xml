@@ -10,11 +10,5 @@
             <role name="Site Administrator"/>
             <role name="Reviewer"/>
         </permission>
-        <permission name="collective.qna: Create questions" acquire="False">
-            <role name="Authenticated"/>
-        </permission>
-        <permission name="collective.qna: Answer questions" acquire="False">
-            <role name="Authenticated"/>
-        </permission>
     </permissions>
 </rolemap>

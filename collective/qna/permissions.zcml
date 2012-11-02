@@ -10,13 +10,5 @@
         id="collective.qna.AdministerForum"
         title="collective.qna: Administer forum"
         />
-    <permission
-        id="collective.qna.CreateQuestions"
-        title="collective.qna: Create questions"
-        />
-    <permission
-        id="collective.qna.AnswerQuestions"
-        title="collective.qna: Answer questions"
-        />
 
 </configure>
