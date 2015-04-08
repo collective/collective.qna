@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+    <object name="qna_forum_workflow" meta_type="Workflow"/>
+    <bindings>
+        <type type_id="qna_forum">
+            <bound-workflow workflow_id="qna_forum_workflow"/>
+        </type>
+        <type type_id="qna_question">
+            <bound-workflow workflow_id="qna_forum_workflow"/>
+        </type>
+        <type type_id="qna_answer">
+            <bound-workflow workflow_id="qna_forum_workflow"/>
+        </type>
+    </bindings>
+</object>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<rolemap>
+    <permissions>
+        <permission name="collective.qna: Add forum" acquire="True">
+            <role name="Manager"/>
+            <role name="Site Administrator"/>
+        </permission>
+        <permission name="collective.qna: Administer forum" acquire="True">
+            <role name="Manager"/>
+            <role name="Site Administrator"/>
+            <role name="Reviewer"/>
+        </permission>
+    </permissions>
+</rolemap>

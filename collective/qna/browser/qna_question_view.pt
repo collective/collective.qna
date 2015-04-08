@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="collective.qna">
+<body>
+
+<metal:main fill-slot="main">
+  <h1 class="documentFirstHeading" tal:content="context/Title" />
+  <p class="documentDescription" tal:content="context/details" />
+
+  <ul class="qna-answer-listing">
+    <tal:t tal:repeat="item context/@@folderListing">
+      <li tal:define="isBest python:item.getId() == getattr(context,'best_answer','')"
+          tal:attributes="class python:'best-answer' if isBest else ''"
+          >
+          <div tal:define="ob item/getObject"
+               tal:content="structure ob/@@fragment" />
+          <ul class="actions">
+            <li tal:condition="python:view.canEditContent() and not(isBest)">
+              <a href="#"
+                 tal:attributes="href string:${context/absolute_url}/mark-best-answer?id=${item/getId};">
+                Mark as best answer
+              </a>
+            </li>
+          </ul>
+      </li>
+    </tal:t>
+  </ul>
+</metal:main>
+
+</body>
+</html>

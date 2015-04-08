@@ -1,0 +1,63 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.qna">
+
+  <browser:page
+      for="..behaviors.IForum"
+      name="most-recent"
+      class=".qnaforum.MostRecent"
+      template="qna_forum_view.pt"
+      permission="zope2.View"
+      />
+  <browser:page
+      for="..behaviors.IForum"
+      name="most-activity"
+      class=".qnaforum.MostRecent"
+      template="qna_forum_view.pt"
+      permission="zope2.View"
+      />
+  <browser:page
+      for="..behaviors.IForum"
+      name="all-unanswered"
+      class=".qnaforum.AllUnanswered"
+      template="qna_forum_view.pt"
+      permission="zope2.View"
+      />
+  <browser:page
+      for="..behaviors.IForum"
+      name="by-category"
+      class=".qnaforum.ByCategory"
+      template="qna_forum_view.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="..behaviors.IQuestion"
+      name="view"
+      class=".qnaquestion.QuestionView"
+      template="qna_question_view.pt"
+      permission="zope2.View"
+      />
+  <browser:page
+      for="..behaviors.IQuestion"
+      name="fragment"
+      class=".qnaquestion.QuestionView"
+      template="qna_question_fragment.pt"
+      permission="zope2.View"
+      />
+  <browser:page
+      for="..behaviors.IQuestion"
+      name="mark-best-answer"
+      class=".qnaquestion.QuestionView"
+      attribute="markBestAnswer"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="..behaviors.IAnswer"
+      name="fragment"
+      template="qna_answer_fragment.pt"
+      permission="zope2.View"
+      />
+</configure>

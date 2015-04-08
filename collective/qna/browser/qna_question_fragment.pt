@@ -1,0 +1,43 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:metal="http://xml.zope.org/namespaces/metal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     i18n:domain="collective.qna"
+     tal:define="uuid context/@@uuid;
+                 url_quote nocall:modules/Products.PythonScripts.standard/url_quote;"
+     class="qna_question_listing"
+     >
+
+  <a href="#" class="total-answers"
+     tal:attributes="href context/absolute_url">
+     <span tal:content="python:context.portal_catalog(UID=uuid)[0].qna_total_answers">5</span>
+     <span>Answers</span>
+  </a>
+
+  <a href="#" class="user"
+     tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/author/${context/Creator};"
+     >
+    <span tal:content="context/Creator">
+      Anthony User
+    </span>
+  </a>
+
+  <a href="#" class="details"
+     tal:attributes="href context/absolute_url">
+    <h3 tal:content="context/Title">My question is this</h3>
+    <div class="details"
+         tal:content="context/details">
+      I don't know how to do this
+    </div>
+  </a>
+  <ul class="categories">
+    <li tal:repeat="category context/Subject">
+      <a href="#"
+         tal:attributes="href python:context.absolute_url() + '/by-category?category=' + url_quote(category,'');"
+         tal:content="category">
+         Tag
+      </a>
+    </li>
+  </ul>
+
+</div>

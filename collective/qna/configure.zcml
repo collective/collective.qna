@@ -1,0 +1,60 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.qna">
+
+    <includeDependencies package="." />
+
+    <include package=".browser" file="configure.zcml" />
+    <include file="permissions.zcml" />
+
+    <genericsetup:registerProfile
+        name="default"
+        title="collective.qna"
+        directory="profiles/default"
+        description="Stackexchange-alike question and answer forum"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <plone:behavior
+        title="QnA Forum"
+        description="Works as the top-level QnA page"
+        provides=".behaviors.IForum"
+        />
+
+    <plone:behavior
+        title="QnA Question"
+        description="Works like a QnA question"
+        provides=".behaviors.IQuestion"
+        />
+
+    <plone:behavior
+        title="QnA Answer"
+        description="Works like a QnA answer"
+        provides=".behaviors.IAnswer"
+        />
+
+    <utility
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        name="collective.qna.answers"
+        component=".behaviors.AnswersVocab"
+        />
+
+    <!-- Conversation indexes -->
+    <adapter name="qna_total_answers" factory=".catalog.qna_total_answers" />
+
+    <subscriber
+        for=".behaviors.IAnswer
+             zope.app.container.interfaces.IObjectAddedEvent"
+        handler=".events.IndexParent"
+        />
+    <!-- Answers shouldn't be editable by the question owners -->
+    <subscriber
+        for=".behaviors.IAnswer
+             zope.app.container.interfaces.IObjectAddedEvent"
+        handler=".events.DontInheritLocalRoles"
+        />
+
+</configure>
